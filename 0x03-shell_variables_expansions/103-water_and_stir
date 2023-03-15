@@ -1,0 +1,2 @@
+#!/bin/bash
+printf "%0/n" $(( $((S#$(echo$WATER | tr water 01234))) + $((S#$(echo $STIR | TR STIR 01234))) )) | TR 01234567 bestchol
