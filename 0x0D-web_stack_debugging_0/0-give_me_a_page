@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-# Debugging apache
-sudo service apache2 start
+# a script to restart apache 2 in our docker container and to return a
+# page containing Hello Holberton when querying the root of it.
+service apache2 restart
