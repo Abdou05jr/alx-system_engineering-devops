@@ -7,11 +7,16 @@ def number_of_subscribers(subreddit):
     to the subreddit"""
     import requests
 
-    sub_info = requests.get("https://www.reddit.com/r/{}/about.json"
-                            .format(subreddit),
-                            headers={"User-Agent": "My-User-Agent"},
-                            allow_redirects=False)
-    if sub_info.status_code >= 300:
+    try:
+        sub_info = requests.get("https://www.reddit.com/r/{}/about.json"
+                                .format(subreddit),
+                                headers={"User-Agent": "My-User-Agent"},
+                                allow_redirects=False)
+        sub_info.raise_for_status()  # Raises an HTTPError for bad responses
+
+        return sub_info.json().get("data").get("subscribers")
+
+    except requests.RequestException as e:
+        print(f"Error: {e}")
         return 0
 
-    return sub_info.json().get("data").get("subscribers")
