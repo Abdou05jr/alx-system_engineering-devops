@@ -1,6 +1,6 @@
-# Fixes bad "phpp" extensions to "php"in "wp-settings.php".
+#!/usr/bin/bash
+# code
 
-exec {'fix-wordpress' :
-   command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
-    path   => '/usr/local/bin/:/bin/'
-} 
+exec { 'fix code':
+  command   => "/bin/sed -i  's/phpp/php/g' /var/www/html/wp-settings.php",
+}
